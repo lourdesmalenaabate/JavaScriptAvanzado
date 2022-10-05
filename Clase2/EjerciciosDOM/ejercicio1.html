@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Acceso del JS al DOM</title>
+    <style>
+        .azul {
+            background-color: cyan;
+            color: purple;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="titulo">JS Av. Clase 2</h1>
+
+    <div id="texto"></div>
+
+    <!-- ul>li*5{Item $} -->
+    <ul id="lista-items">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+
+    <ul id="lista-productos">
+        <li>Producto 1</li>
+        <li>Producto 2</li>
+        <li>Producto 3</li>
+        <li>Producto 4</li>
+        <li>Producto 5</li>
+    </ul>
+
+
+    <script>
+        /* ------------------------------------------ */
+        /*      Acceso a h1 (Elemento de título)      */
+        /* ------------------------------------------ */
+        var titulo = document.querySelector('h1')
+        //titulo.innerText = 'Título creado desde JS'
+        titulo.innerHTML = 'Título creado desde <a href="#">JS</a>'
+        console.log(titulo.innerText)
+        console.log(titulo.innerHTML)
+
+        titulo.classList.add('azul')
+        titulo.classList.remove('azul')
+
+        /* ------------------------------------------ */
+        /*            Acceso a la lista ul            */
+        /* ------------------------------------------ */
+        var items = document.querySelectorAll('#lista-items li')
+        console.log(items)
+
+        const colores = ['red','blue','green','brown','orangered']
+        for(let i=0; i<items.length; i++) {
+            items[i].innerHTML = `Elemento Nro. <b>${i+1}</b>`
+            //items[i].innerHTML = `Elemento Nro. <b style="color:${colores[i]}">${i+1}</b>`
+            items[i].style.color = colores[i]
+            items[i].style.backgroundColor = '#222'
+        }
+
+        /* ------------------------------------------ */
+        /*           Creación de un párrafo           */
+        /* ------------------------------------------ */
+        var parrafo = document.createElement('p')
+        parrafo.innerText = 'Hola soy un párrafo'
+        parrafo.style.color = 'yellow'
+        parrafo.style.backgroundColor = '#000'
+        parrafo.style.padding = '10px'
+        parrafo.style.borderRadius = '10px'
+        parrafo.id = 'parrafo'
+        parrafo.classList.add('txt')
+        //document.body.appendChild(parrafo)
+
+        let texto = document.querySelector('#texto')
+        texto.appendChild(parrafo)
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+progress {
+    width: 85%;
+    height: 30px;
+    position: relative;
+    top: 7px;
+    display: none;
+}
+
+span {
+    display: none;
+}
+
+#drop {
+    border: 3px dashed blue;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    line-height: 150px;
+    font-size: 22px;
+    color: red;
+    background-color: lightyellow;
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    cursor: pointer;
+}
+
+input {
+    display: none;
+}

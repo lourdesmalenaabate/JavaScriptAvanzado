@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Acceso avanzado de JS al DOM</title>
+    <style>
+        h2 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>
+        Crear una lista desordenada con 10 elementos dentro, utilizando un ciclo for.
+        Tener en cuenta que sólo se podrá hacer un único appendChild al ul creado.
+        De esta manera se minimiza el tiempo de modificaciones en el DOM.
+    </h2>
+    <hr>
+
+    <script>
+
+        /* ------------------------------------------------- */
+        /*         Resolución con DocumentFragment           */
+        /* ------------------------------------------------- */
+        var ul = document.createElement('ul')
+        document.body.appendChild(ul)
+
+        //https://developer.mozilla.org/es/docs/Web/API/DocumentFragment
+        var fragment = new DocumentFragment()
+
+        for(let i=0; i<10; i++) {
+            var li = document.createElement('li')
+            li.innerText = `Elemento ${i+1}`
+            //ul.appendChild(li)    // --> No cumple con el enunciado (10 appendChild al ul)
+            fragment.appendChild(li)
+        }
+        ul.appendChild(fragment)    // --> Si cumple con el enunciado (1 appendChild al ul)
+
+        /* ------------------------------------------------- */
+        /*        Resolución con Inyección de String         */
+        /* ------------------------------------------------- */
+        /* var ul = document.createElement('ul')
+        document.body.appendChild(ul)
+
+        var contenido = ''
+        for(let i=0; i<10; i++) {
+            contenido += `<li>Elemento ${i+1}</li>`
+            //ul.appendChild(li)
+        }
+        ul.innerHTML = contenido // --> Si cumple con el enunciado (0 appendChild al ul), si el string es grande, se vuelve ineficiente */
+
+    </script>
+
+</body>
+</html>

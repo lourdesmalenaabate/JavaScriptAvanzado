@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Ajax</title>
+    <style>
+        h3 { color: blue;}
+    </style>
+</head>
+<body>
+
+    <hr>
+    <h3>
+        Se necesita crear un mecanismo que permita inyectar código HTML dentro de mi página web.
+        Considerar que este código se encuentra almacenado en un archivo externo.
+        La idea es disponer de un botón que cargue ese contenido en forma dinámica y sin recargar el marco total del navegador.
+    </h3>
+    <hr>
+
+    <h1>Mi página</h1>
+    <main></main>
+    <button>Cargar contenido</button>
+    <button>Remover contenido</button>
+
+    <script>
+        let btnCargar = document.querySelectorAll('button')[0]
+        let btnRemover = document.querySelectorAll('button')[1]
+        let main = document.querySelector('main')
+
+        btnRemover.disabled = true
+
+        btnRemover.addEventListener('click', () => {
+            console.log('Click en botón remover')
+
+            /* let div = document.querySelector('div')
+            //document.body.removeChild(div)
+            main.removeChild(div) */
+
+            main.innerHTML = ''
+
+            btnCargar.disabled = false
+            btnRemover.disabled = true
+        })
+
+        //let plantillaInyectada = false
+        btnCargar.addEventListener('click', () => {
+            console.log('Click en botón agregar')
+
+            //if(!plantillaInyectada) {
+                let xhr = new XMLHttpRequest
+                xhr.open('get', 'plantilla.html')
+                xhr.addEventListener('load', () => {
+                    if(xhr.status == 200) {
+                        let plantilla = xhr.response
+                        //console.log(plantilla)
+
+                        /* let div = document.createElement('div')
+                        div.innerHTML = plantilla
+                        //document.body.appendChild(div)
+                        main.appendChild(div) */
+
+                        main.innerHTML = plantilla
+
+                        btnCargar.disabled = true
+                        btnRemover.disabled = false
+                        //plantillaInyectada = true
+                    }
+                })
+                xhr.send()
+            //}
+        })
+
+
+    </script>
+
+
+</body>
+</html>

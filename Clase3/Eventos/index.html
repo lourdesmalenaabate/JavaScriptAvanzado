@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks y Eventos en Javascript</title>
+    <style>
+        #uno { width: 200px; height: 200px; background-color: red; color: white; }
+        #dos { width: 150px; height: 150px; background-color: blue; color: white; }
+        #tres { width: 100px; height: 100px; background-color: green; color: white; }
+    </style>
+</head>
+<body>
+    
+    <!-- ------------------------------------------------------------------ -->
+    <a href="https://www.google.com" id="link">Ir a google</a>
+    <hr>
+    <!-- ------------------------------------------------------------------ -->
+    <p id="info-resize">Info del tamaño del navegador (interno y externo)</p>
+    <hr>
+    <!-- ------------------------------------------------------------------ -->
+    <button id="btn-look">Disparar el evento look1</button>
+    <hr>
+    <!-- ------------------------------------------------------------------ -->
+    <!-- <button onclick="console.log('Click!')">Click Me!</button> -->
+    <button id="btn">Click Me!</button>
+    <hr>
+    <!-- ------------------------------------------------------------------ -->
+    <div id="uno">
+        UNO
+        <div id="dos">
+            DOS
+            <div id="tres">
+                TRES
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- ------------------------------------------------------------------ -->
+    <button id="estatico">Estático</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
